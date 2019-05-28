@@ -5,7 +5,8 @@ public class Talks {
     private String sessionTime,lunchTitle,trackTitle, title,networkingTitle;
 
     
-
+    boolean lunchFlag=false;
+    boolean networkingFlag = false;
 
 
     public  Talks(int minutes,String title,int id)
@@ -13,8 +14,7 @@ public class Talks {
         this.minutes = minutes;
         this.title = title;
         this.id = id;
-        this.lunchFlag=false;
-        this.networkingFlag = false;
+       
 
     }
 
