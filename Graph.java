@@ -91,9 +91,44 @@ public class Graph {
         return distance;
     }
 
-    private static int getIndex(String vertex) {
+    private static int getIndex(String vertex)
+    {
         return binarySearch(VERTEX_LIST, vertex); /// simplest and most efficient method to find an element in a sorted
                                                   /// array in Java
         
     }
+    public int calculateTripsCount(String from, String to, Predicate<Integer> p, int stops)
+    {
+        this.to = getIndex(to);
+        this.stops = stops;
+        this.tripsCount = 0;
+        int startIndex = getIndex(from);
+        calculateTripsCount(startIndex, Integer.toString(startIndex), p);
+        
+        return tripsCount;
+    }
+    
+    private void calculateTripsCount(int from, String path, Predicate<Integer> p)
+    {  
+        
+        List<Edge> edges = adj(from);
+        for (Edge e: edges) 
+        {
+            
+            String next = path + e.to();
+            int stopCount = next.length()-1; // gives the number of towns you passed
+            /**
+              * check if the number of towns you have passed is within the acceptable range <= max towns and if you have arrived at the destination
+              * if  true increase tripsCount to consider  the path
+             */
+            if (this.to == e.to() && p.test(stopCount)) 
+                tripsCount=tripsCount+1;
+            
+            if(stopCount <= stops)
+                calculateTripsCount(e.to(), next, p);
+        }
+    }
+
+
+
 }

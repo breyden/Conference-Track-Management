@@ -6,3 +6,7 @@ note an edge has weight which is the distance between two towns and two nodes re
 -get the starting town and its adj list 
 - check if the next town exists and if so continue with the following town until you reach the destination or the is no route 
 - dont forget to accumulate the distance along the route.
+
+2. The number of trips starting at one town and ending at one town with a maximum of n stops
+- get the towns linked to the from town
+- recursive (moving forward) check if its the destination ensuring  you have not exceeded the number of max towns to pass by for a given route
