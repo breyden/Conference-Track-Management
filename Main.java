@@ -5,6 +5,5 @@ public class Main {
         Conference conference = new Conference();
         // Process the received input of Talks's Title and their time.
         conference.ReceiveInput(Configuration.TALKS_INPUT_FILE);
-
     }
 }

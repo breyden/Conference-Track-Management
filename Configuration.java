@@ -8,6 +8,6 @@ public class Configuration
     //total time in minutes.
     public static final Double TOTAL_TRACK_MINUTES = 420.0;
     // Read data from file and create a list of String.
-    public static final String TALKS_INPUT_FILE = "/Users/breydenmonyemoratho/Desktop/PRIVY SEAL SOLUTION/TalksInput.txt";
+    public static final String TALKS_INPUT_FILE = "TalksInput.txt";
 
 }

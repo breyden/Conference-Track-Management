@@ -128,6 +128,90 @@ public class Graph {
                 calculateTripsCount(e.to(), next, p);
         }
     }
+    public int calculateShortestPath(String from, String to)
+    {
+        allPath = new ArrayList<>();
+        this.to = getIndex(to);
+        int startIndex = getIndex(from);
+        calculateShortestPath(startIndex, String.valueOf(startIndex));
+        
+        int shortestDistance = Integer.MAX_VALUE, currentDistance;
+        for(String s: allPath)
+        {
+            currentDistance = calculateDistance(s);
+            if(shortestDistance > currentDistance)
+                shortestDistance = currentDistance;
+        }
+        
+        if(shortestDistance == Integer.MAX_VALUE) return 0;
+        
+        return shortestDistance;
+    }
+    private void calculateShortestPath(int from, String path) 
+    {
+        List<Edge> edges = adj(from);
+        for (Edge e: edges) 
+        {
+            
+            if (path.length()>1 && path.substring(1).contains(String.valueOf(e.to()))) //checked visited or not
+                continue;  
+            
+            String next = path + e.to();
+ 
+            if (this.to == e.to()) 
+            {
+                allPath.add(getPathName(next)); 
+            }
+            calculateShortestPath(e.to(), next);
+        }
+    }
+    private String getPathName(String path){
+        String arr[] = path.trim().split("");
+        String name = "";
+        for(String v: arr)
+        {
+            name += getVertexName(Integer.parseInt(v));
+        }
+        return name;
+    }
+    private String getVertexName(int index) {
+        if (index < 0 || index >= VERTEX_LIST.length) 
+        {
+            throw new IllegalArgumentException("Wrong index");
+
+        }
+          
+ 
+        return VERTEX_LIST[index];
+    }
+
+    public int calculateRoutesCount(String from, String to, int maxDistance)
+    {
+        this.to = getIndex(to);
+        this.maxDistance = maxDistance;
+        this.routesCount = 0;
+        int startIndex = getIndex(from);
+        calculateRoutesCount(startIndex, String.valueOf(startIndex));
+        
+        return routesCount;
+    }
+    
+    private void calculateRoutesCount(int from, String path)
+    {
+        List<Edge> edges = adj(from);
+        for (Edge e: edges)
+         {
+            
+            String next = path + e.to();
+            int distance = calculateDistance(getPathName(next));
+            
+            if (this.to == e.to() && (distance < maxDistance)) 
+                routesCount++;
+            
+            if(distance < maxDistance)
+                calculateRoutesCount(e.to(), next);
+        }
+    }
 
 
 

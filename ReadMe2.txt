@@ -10,3 +10,11 @@ note an edge has weight which is the distance between two towns and two nodes re
 2. The number of trips starting at one town and ending at one town with a maximum of n stops
 - get the towns linked to the from town
 - recursive (moving forward) check if its the destination ensuring  you have not exceeded the number of max towns to pass by for a given route
+
+4. shortest trip
+- use second year algorithm
+5. . The number of different routes from X to Y with a distance of less than Z
+- get the towns linked/adjacent to the from town
+- recursive (moving forward) check if its the destination ensuring  you still within the acceptable distance  for a given route
+
+

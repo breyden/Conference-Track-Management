@@ -4,17 +4,17 @@ import java.text.SimpleDateFormat;
 public class Conference{
 
 
+    List<Talks> trackTalks;
+
+    int totalTrackMinutes;
+    int countTrack;
+    int countTalks;
 
 public   Conference()
     {
         this.trackTalks = new ArrayList();
     }
 
-    List<Talks> trackTalks;
-
-    int totalTrackMinutes;
-    int countTrack;
-    int countTalks;
 
     public int getTotalTrackMinutes()
     {
@@ -86,7 +86,7 @@ public   Conference()
                 ** Assume the time is given minutes */
 
                 String Title = strLine.substring(0, strLine.lastIndexOf(" "));
-                String MinutesString = strLine.substring(strLine.lastIndexOf(" ") + 1);
+               
                 String Minutes = strLine.replaceAll("\\D+", "");
 
                 
